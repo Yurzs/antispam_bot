@@ -13,6 +13,8 @@ services:
       SESSION_PATH: ${SESSION_PATH}
     links:
       - mongo
+    volumes:
+    - ${SESSION_PATH}:${SESSION_PATH}
     restart: always
   mongo:
     image: mongo
