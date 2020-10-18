@@ -3,7 +3,7 @@ from apscheduler.jobstores.mongodb import MongoDBJobStore
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from pytz import utc
 
-from antispam_userbot.config import MONGO_DATABASE_NAME, mongo_client
+from antispam_userbot.config import mongo_client, MONGO_DATABASE_NAME
 
 jobstores = {
     'default': MongoDBJobStore(MONGO_DATABASE_NAME, client=mongo_client.delegate),
@@ -12,7 +12,6 @@ jobstores = {
 executors = {
     'default': AsyncIOExecutor(),
 }
-
 
 job_defaults = {
     'coalesce': False,

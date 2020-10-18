@@ -1,7 +1,7 @@
 import pymongo
 from mdocument import Document, DocumentDoesntExist
 
-from antispam_userbot.config import MONGO_DATABASE_NAME, mongo_client
+from antispam_userbot.config import mongo_client, MONGO_DATABASE_NAME
 
 
 class Challenge(Document):

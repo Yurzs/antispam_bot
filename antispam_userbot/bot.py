@@ -1,14 +1,13 @@
-import random
 import datetime
 import logging
+import random
 
-from telethon import TelegramClient, events, types, functions
+from telethon import events, functions, TelegramClient
 
-from antispam_userbot.config import SESSION_PATH, API_ID, SECRET
-from antispam_userbot.scheduler import scheduler
-from antispam_userbot.model.known_user import KnownUser
+from antispam_userbot.config import API_ID, SECRET, SESSION_PATH
 from antispam_userbot.model.challenge import Challenge
-
+from antispam_userbot.model.known_user import KnownUser
+from antispam_userbot.scheduler import scheduler
 
 client = TelegramClient(SESSION_PATH, API_ID, SECRET)
 log = logging.getLogger("antispam_bot")
@@ -146,6 +145,7 @@ async def save_known_user(event: events.NewMessage.Event):
     if event.chat is None:
         await KnownUser.find_or_create(event.chat_id)
         scheduler.remove_job(f"{event.chat_id}.report_user")
+
 
 client.start()
 scheduler.start()

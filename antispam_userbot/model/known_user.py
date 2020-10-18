@@ -1,6 +1,6 @@
-from mdocument import Document, DocumentDoesntExist
+from mdocument import Document
 
-from antispam_userbot.config import MONGO_DATABASE_NAME, mongo_client
+from antispam_userbot.config import mongo_client, MONGO_DATABASE_NAME
 
 
 class KnownUser(Document):
