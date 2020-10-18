@@ -1,0 +1,6 @@
+*venv*
+*pycache*
+*.pyc
+*.pyo
+*.session
+*.session-journal
