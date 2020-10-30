@@ -2,7 +2,7 @@ import datetime
 import logging
 import random
 
-from telethon import events, functions, TelegramClient
+from telethon import events, functions, TelegramClient, types
 
 from antispam_userbot.config import API_ID, SECRET, SESSION_PATH
 from antispam_userbot.model.challenge import Challenge
@@ -73,7 +73,7 @@ def challenge() -> tuple[str, int]:
 async def check_user(event: events.NewMessage.Event):
     """Checks that either user in known users or in contacts."""
 
-    if event.chat is None:
+    if event.chat is None or isinstance(event.chat, types.User):
         contacts = await client(functions.contacts.GetContactsRequest(hash=0))
         if event.message.peer_id in [contact.user_id for contact in contacts.contacts]:
             return False
